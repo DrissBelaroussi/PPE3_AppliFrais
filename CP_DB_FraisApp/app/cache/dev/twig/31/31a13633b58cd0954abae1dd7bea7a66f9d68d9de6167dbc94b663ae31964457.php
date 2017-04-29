@@ -1,0 +1,277 @@
+<?php
+
+/* FraisBundle:Comptable:SuivrePaiements.html.twig */
+class __TwigTemplate_a26dbc9a18e7e9f4a9a9ef5932dd57b258d87eefe3f0e02faf841631387b4db1 extends Twig_Template
+{
+    public function __construct(Twig_Environment $env)
+    {
+        parent::__construct($env);
+
+        $this->parent = false;
+
+        $this->blocks = array(
+        );
+    }
+
+    protected function doDisplay(array $context, array $blocks = array())
+    {
+        $__internal_d24c2dc1e5a5b7772b7f3c828cfddee2da31ccc11cc0fb554e9deae4f2a6c271 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_d24c2dc1e5a5b7772b7f3c828cfddee2da31ccc11cc0fb554e9deae4f2a6c271->enter($__internal_d24c2dc1e5a5b7772b7f3c828cfddee2da31ccc11cc0fb554e9deae4f2a6c271_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Comptable:SuivrePaiements.html.twig"));
+
+        // line 2
+        echo "
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        ";
+        // line 6
+        if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
+            // asset "3584534_0"
+            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("_assetic_3584534_0") : $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("_controller/css/3584534_part_1_bootstrap-theme.min_1.css");
+            // line 7
+            echo "        <link rel=\"stylesheet\" href=\"";
+            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo "\" type=\"text/css\" />
+        ";
+            // asset "3584534_1"
+            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("_assetic_3584534_1") : $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("_controller/css/3584534_part_1_bootstrap.min_2.css");
+            echo "        <link rel=\"stylesheet\" href=\"";
+            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo "\" type=\"text/css\" />
+        ";
+            // asset "3584534_2"
+            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("_assetic_3584534_2") : $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("_controller/css/3584534_part_1_style_3.css");
+            echo "        <link rel=\"stylesheet\" href=\"";
+            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo "\" type=\"text/css\" />
+        ";
+        } else {
+            // asset "3584534"
+            $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("_assetic_3584534") : $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("_controller/css/3584534.css");
+            echo "        <link rel=\"stylesheet\" href=\"";
+            echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
+            echo "\" type=\"text/css\" />
+        ";
+        }
+        unset($context["asset_url"]);
+        // line 8
+        echo " 
+    </head>
+
+
+    <body>
+        
+        ";
+        // line 14
+        if (array_key_exists("form", $context)) {
+            // line 15
+            echo "            ";
+            echo             $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
+            echo "
+         ";
+        }
+        // line 17
+        echo "         
+         
+         ";
+        // line 19
+        if (array_key_exists("message", $context)) {
+            // line 20
+            echo "            <div class=\"alert alert-default\">
+                <strong>Oops !</strong> ";
+            // line 21
+            echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
+            echo "
+            </div>
+        ";
+        }
+        // line 24
+        echo "        <table  class=\"table-bordered\" >
+
+
+
+            ";
+        // line 28
+        if (array_key_exists("ficheVA", $context)) {
+            // line 29
+            echo "
+                <tr>
+                    <th>Identifiant </th>
+                    <th>Nom </th>
+                    <th>Prénom </th>                    
+                    <th>Date </th>                                     
+                    <th>Etat </th>
+                    <th>Date du modif </th>
+                </tr>
+
+                ";
+            // line 39
+            $context['_parent'] = $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["ficheVA"]) ? $context["ficheVA"] : $this->getContext($context, "ficheVA")));
+            foreach ($context['_seq'] as $context["_key"] => $context["fiche"]) {
+                // line 40
+                echo "
+
+                    <tr>     
+
+                        <td>";
+                // line 44
+                echo twig_escape_filter($this->env, $this->getAttribute($context["fiche"], "id", array()), "html", null, true);
+                echo "</td>
+                        <td>";
+                // line 45
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["fiche"], "idvisiteur", array()), "nom", array()), "html", null, true);
+                echo "</td>
+                        <td>";
+                // line 46
+                echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($context["fiche"], "idvisiteur", array()), "prenom", array()), "html", null, true);
+                echo "</td> 
+                        <td>";
+                // line 47
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["fiche"], "date", array()), "d/m/Y"), "html", null, true);
+                echo "</td>
+                        <td>";
+                // line 48
+                echo twig_escape_filter($this->env, $this->getAttribute($context["fiche"], "idEtat", array()), "html", null, true);
+                echo "</td>
+                        <td>";
+                // line 49
+                echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute($context["fiche"], "datemodif", array()), "d/m/Y"), "html", null, true);
+                echo "</td>
+                        <td>
+                            <form action=\"";
+                // line 51
+                echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("detailFiche");
+                echo "\" method=\"post\">
+                                <input type=\"submit\" class=\"btn btn-lg btn-inverse\" value=\"Détail\" />   
+                                <input type=\"hidden\" name=\"idFiche\"  value=\"";
+                // line 53
+                echo twig_escape_filter($this->env, $this->getAttribute($context["fiche"], "id", array()), "html", null, true);
+                echo "\"/>                              
+                            </form>
+                        </td>
+
+                    </tr>
+
+
+
+                ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['fiche'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 62
+            echo "            ";
+        }
+        // line 63
+        echo "
+        </table>
+
+        <form action=\"";
+        // line 66
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("frais_connexionC");
+        echo "\" method=\"post\">
+            <input type=\"submit\" class=\"btn btn-lg btn-default\"  value=\"Retour\" />
+        </form>
+
+
+    </body>
+
+";
+        
+        $__internal_d24c2dc1e5a5b7772b7f3c828cfddee2da31ccc11cc0fb554e9deae4f2a6c271->leave($__internal_d24c2dc1e5a5b7772b7f3c828cfddee2da31ccc11cc0fb554e9deae4f2a6c271_prof);
+
+    }
+
+    public function getTemplateName()
+    {
+        return "FraisBundle:Comptable:SuivrePaiements.html.twig";
+    }
+
+    public function isTraitable()
+    {
+        return false;
+    }
+
+    public function getDebugInfo()
+    {
+        return array (  172 => 66,  167 => 63,  164 => 62,  149 => 53,  144 => 51,  139 => 49,  135 => 48,  131 => 47,  127 => 46,  123 => 45,  119 => 44,  113 => 40,  109 => 39,  97 => 29,  95 => 28,  89 => 24,  83 => 21,  80 => 20,  78 => 19,  74 => 17,  68 => 15,  66 => 14,  58 => 8,  32 => 7,  28 => 6,  22 => 2,);
+    }
+
+    public function getSource()
+    {
+        return "{# empty Twig template #}
+
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel=\"stylesheet\" href=\"{{ asset_url }}\" type=\"text/css\" />
+        {% endstylesheets %} 
+    </head>
+
+
+    <body>
+        
+        {%if form is defined %}
+            {{form(form)}}
+         {% endif%}
+         
+         
+         {% if message is defined %}
+            <div class=\"alert alert-default\">
+                <strong>Oops !</strong> {{message}}
+            </div>
+        {% endif %}
+        <table  class=\"table-bordered\" >
+
+
+
+            {% if ficheVA is defined%}
+
+                <tr>
+                    <th>Identifiant </th>
+                    <th>Nom </th>
+                    <th>Prénom </th>                    
+                    <th>Date </th>                                     
+                    <th>Etat </th>
+                    <th>Date du modif </th>
+                </tr>
+
+                {% for fiche in ficheVA %}
+
+
+                    <tr>     
+
+                        <td>{{ fiche.id }}</td>
+                        <td>{{ fiche.idvisiteur.nom }}</td>
+                        <td>{{ fiche.idvisiteur.prenom }}</td> 
+                        <td>{{ fiche.date | date('d/m/Y')}}</td>
+                        <td>{{ fiche.idEtat}}</td>
+                        <td>{{ fiche.datemodif | date('d/m/Y')}}</td>
+                        <td>
+                            <form action=\"{{ path('detailFiche') }}\" method=\"post\">
+                                <input type=\"submit\" class=\"btn btn-lg btn-inverse\" value=\"Détail\" />   
+                                <input type=\"hidden\" name=\"idFiche\"  value=\"{{ fiche.id }}\"/>                              
+                            </form>
+                        </td>
+
+                    </tr>
+
+
+
+                {% endfor %}
+            {% endif %}
+
+        </table>
+
+        <form action=\"{{ path('frais_connexionC') }}\" method=\"post\">
+            <input type=\"submit\" class=\"btn btn-lg btn-default\"  value=\"Retour\" />
+        </form>
+
+
+    </body>
+
+";
+    }
+}

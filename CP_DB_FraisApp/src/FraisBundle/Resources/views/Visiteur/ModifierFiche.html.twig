@@ -1,0 +1,101 @@
+{# empty Twig template #}
+
+<html>
+    <head>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    
+    {{ include("FraisBundle:Template:VisiteurConnectedMenu.html.twig") }}
+    <div class="container">
+         {#{% if lesFiches is defined%}
+             {% for fiche in lesFiches %}
+                 {{ fiche.nbJustificatifs }}
+             {% endfor %}
+         {%endif%}#}
+             
+         <table class="table table-striped">
+             
+        {% if ficheFrais is defined%}
+            {# {% for fiche in ficheFrais %}#}
+            <tr>
+                <th>Identifiant </th>
+                 <td>{{ ficheFrais["idVisiteur"] }}</td>
+            </tr>
+                
+            <tr>     
+                 <th>Mois </th>
+                 <td>{{ ficheFrais["mois"] }}</td>
+            <tr>
+                <th>Etat </th>
+                 <td>{{ ficheFrais["idEtat"] }}</td>
+            </tr>
+            
+            <tr>
+                <th>Date du motif </th>
+                 <td>{{ ficheFrais["dateModif"] | date('d/m/Y')}}</td>
+                 
+            </tr>
+            
+            <tr>
+                 {% if fraisHF is defined%}
+                 <th> Frais hors forfait</th>
+                 
+
+                    <td>{{fraisHF["libelle"]}}</td>
+            </tr>
+           
+            <tr>
+                <th> Montant hors forfait </th>
+                 <td>{{fraisHF["montant"]}} € </td>
+            </tr>
+            
+            <tr>
+                 <th> date hors forfait </th>
+                  <td>{{ fraisHF["date"] | date('d/m/Y')}}</td>
+                {%endif%}
+            </tr>
+            
+            <tr>
+                 <th> Quantités</th>
+                 <td>{{ficheFrais["quantite"]}}</td>
+            </tr>
+            
+            <tr>
+                
+  
+                
+                 <th> Frais forfait</th>
+                 <td>{{ficheFrais["libelle"]}}</td>
+                
+
+                
+            </tr>
+            <tr>
+                
+  
+                
+                 <th> Modifier la Fiche</th>
+                 <td>
+                      <form action="{{ path('modifierFiche') }}" method="post">
+                            <input type="submit" class="btn btn-lg btn-pink" value="Modifier" />   
+                            <input type="hidden" name="idVisiteur" class="btn btn-lg btn-pink" value="{{ficheFrais["idVisiteur"]}}"
+                            <input type="hidden" name="mois" class="btn btn-lg btn-pink" value="{{ ficheFrais["mois"] }}"
+                            <input type="hidden" name="annee" class="btn btn-lg btn-pink" value="{{ ficheFrais["annee"] }}"/>   
+                        </form>
+                 </td>
+                
+
+                
+            </tr>
+            
+            
+         {%endif%}
+            
+      
+    </div>
+
+</table>
+
+</html>

@@ -1,0 +1,56 @@
+<?php
+
+namespace FraisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fraishorsforfait
+ *
+ * @ORM\Table(name="FraisHorsForfait", indexes={@ORM\Index(name="FK_FraisForfait_fiche", columns={"idFiche"})})
+ * @ORM\Entity(repositoryClass="FraisBundle\Entity\FraishorsforfaitRepository")
+ */
+class Fraishorsforfait
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="libelle", type="string", length=100, nullable=true)
+     */
+    private $libelle;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="montant", type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $montant;
+
+    /**
+     * @var \Fichefrais
+     *
+     * @ORM\ManyToOne(targetEntity="Fichefrais")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idFiche", referencedColumnName="id")
+     * })
+     */
+    private $idfiche;
+
+
+}

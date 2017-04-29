@@ -1,0 +1,23 @@
+<html>
+    <head>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    </head>
+
+    <body>
+
+        {{ include("FraisBundle:Template:VisiteurConnectedMenu.html.twig") }}
+
+        <div class="formRenseigner">
+            {% if form is defined %}
+                <h3> Frais forfaitisés</h3>
+                {{form(form)}}
+            {% endif %}
+        </div>
+
+
+
+       
+
+

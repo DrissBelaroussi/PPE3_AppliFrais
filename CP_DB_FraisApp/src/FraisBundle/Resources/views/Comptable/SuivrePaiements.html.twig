@@ -1,0 +1,72 @@
+{# empty Twig template #}
+
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+
+
+    <body>
+        
+        {%if form is defined %}
+            {{form(form)}}
+         {% endif%}
+         
+         
+         {% if message is defined %}
+            <div class="alert alert-default">
+                <strong>Oops !</strong> {{message}}
+            </div>
+        {% endif %}
+        <table  class="table-bordered" >
+
+
+
+            {% if ficheVA is defined%}
+
+                <tr>
+                    <th>Identifiant </th>
+                    <th>Nom </th>
+                    <th>Prénom </th>                    
+                    <th>Date </th>                                     
+                    <th>Etat </th>
+                    <th>Date du modif </th>
+                </tr>
+
+                {% for fiche in ficheVA %}
+
+
+                    <tr>     
+
+                        <td>{{ fiche.id }}</td>
+                        <td>{{ fiche.idvisiteur.nom }}</td>
+                        <td>{{ fiche.idvisiteur.prenom }}</td> 
+                        <td>{{ fiche.date | date('d/m/Y')}}</td>
+                        <td>{{ fiche.idEtat}}</td>
+                        <td>{{ fiche.datemodif | date('d/m/Y')}}</td>
+                        <td>
+                            <form action="{{ path('detailFiche') }}" method="post">
+                                <input type="submit" class="btn btn-lg btn-inverse" value="Détail" />   
+                                <input type="hidden" name="idFiche"  value="{{ fiche.id }}"/>                              
+                            </form>
+                        </td>
+
+                    </tr>
+
+
+
+                {% endfor %}
+            {% endif %}
+
+        </table>
+
+        <form action="{{ path('frais_connexionC') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-default"  value="Retour" />
+        </form>
+
+
+    </body>
+

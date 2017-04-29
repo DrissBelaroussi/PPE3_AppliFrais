@@ -1,0 +1,55 @@
+{# empty Twig template #}
+
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+        {{ include("FraisBundle:Template:VisiteurConnectedMenu.html.twig") }}
+
+        <table class="tableRenseignerHome">
+
+            <tr>
+                <td>
+                    <form action="{{ path('modifierFF') }}" method="post">
+                        <input type="submit" class="btn btn-lg btn-inverse" value="Renseigner frais forfaitisés" />
+                    </form>
+                </td>
+                {% if fiche is defined %}
+                <td>
+                    
+                    <form action="{{ path('renseignerHF') }}" method="post">
+                        <input type="submit" class="btn btn-lg btn-inverse" value="Renseigner frais hors forfait" />
+                    </form>
+                </td>
+                {% endif %}
+            </tr>
+            <tr>
+            {#<td>
+                <form action="{{ path('modifierFF') }}" method="post">
+                    <input type="submit" class="btn btn-lg btn-inverse" value="Modifier frais forfaitisés" />
+                </form>
+            </td>#}
+            
+               {# <td>
+                    <form action="{{ path('modifierHF') }}" method="post">
+                        <input type="submit" class="btn btn-lg btn-inverse" value="Modifier  frais hors forfait" />
+                    </form>
+                </td>#}
+            </tr>
+        </table>
+
+
+    </body>
+    <footer>
+        <form action="{{ path('frais_connexionV') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-default"  value="Retour" />
+        </form>
+
+    </footer>
+</html>
+
+

@@ -1,0 +1,30 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AppliFrais</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    </head>
+    <body>
+       
+        {{ include("FraisBundle:Template:Menu.html.twig") }}
+        
+        <h1> Connexion Visiteur </h1>
+        <p>
+        <div class="message">
+            {{ message }} 
+        </div>
+        <div class="connexionV">
+            {{ form(form) }}
+        </div> 
+
+
+        <form action="{{ path('frais_homepage') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-default" value="Retour" style="margin:20px"/>   
+        </form>
+    </p>
+
+</body>
+</html> 

@@ -1,0 +1,70 @@
+{# empty Twig template #}
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+        {{ include("FraisBundle:Template:VisiteurConnectedMenu.html.twig") }}
+
+
+    
+        {% if form is defined %}
+            <h3> Frais non forfaitisés</h3>
+            {{form(form)}}
+        {% endif %}
+ 
+
+        {% if alert is defined %}
+            <div class="alert alert-danger">
+                <strong>Attention !</strong> {{alert}}
+            </div>
+        {% endif %}
+
+
+        {% if fraisHF is defined%}
+            {% set totalHF = 0 %}
+            <h3>Frais Hors Forfait</h3>                   
+            <table  class="table-bordered" >
+                <thead class="thead-inverse">
+                <th> Libellé</th>
+                <th> Date  </th>        
+                <th> Montant </th>                                     
+
+
+            </thead>
+            {% for unFraisHF in fraisHF %}
+                <tr>
+                    <td>{{unFraisHF.libelle}} </td> 
+                    <td>{{unFraisHF.date | date('d/m/Y')}}</td>
+                    <td>{{unFraisHF.montant}} € </td> 
+                    <td>
+                        <form action="{{ path('supprimerHF') }}" method="post">
+                            <input type="submit" class="btn btn-lg btn-inverse" value="Supprimer" />   
+                            <input type="hidden" class="btn btn-lg btn-inverse" name="idFraisHF" value="{{unFraisHF.id}}" />
+                        </form>
+                    </td>
+
+                    {% set totalHF =  unFraisHF.montant + totalHF %}   
+
+
+                </tr>
+            {%endfor%} 
+        </table>
+
+        <h5>  Vos frais hors forfait s'élèvent à :  {{totalHF}} € <h5>
+
+            {%endif%}
+
+            </body>
+
+            <footer>
+                <form action="{{ path('frais_connexionV') }}" method="post">
+                    <input type="submit" class="btn btn-lg btn-default"  value="Retour" />
+                </form>
+
+            </footer>
+            </html>
+
