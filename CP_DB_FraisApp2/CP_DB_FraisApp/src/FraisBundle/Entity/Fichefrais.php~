@@ -1,0 +1,73 @@
+<?php
+
+namespace FraisBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Fichefrais
+ *
+ * @ORM\Table(name="FicheFrais", indexes={@ORM\Index(name="FK_FicheFrais_id_Visiteur", columns={"idVisiteur"}), @ORM\Index(name="FK_FicheFrais_id_Etat", columns={"id_Etat"})})
+ * @ORM\Entity(repositoryClass="FraisBundle\Entity\FichefraisRepository")
+ */
+class Fichefrais
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbJustificatifs", type="integer", nullable=true)
+     */
+    private $nbjustificatifs;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="montantValide", type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $montantvalide;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateModif", type="date", nullable=true)
+     */
+    private $datemodif;
+
+    /**
+     * @var \Etat
+     *
+     * @ORM\ManyToOne(targetEntity="Etat")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_Etat", referencedColumnName="id")
+     * })
+     */
+    private $idEtat;
+
+    /**
+     * @var \Visiteur
+     *
+     * @ORM\ManyToOne(targetEntity="Visiteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idVisiteur", referencedColumnName="id")
+     * })
+     */
+    private $idvisiteur;
+
+
+}

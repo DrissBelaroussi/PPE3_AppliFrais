@@ -1,0 +1,112 @@
+
+/*table {
+    border-collapse:collapse;
+}*/
+
+/*td {
+    border: 1px solid #333333;
+    padding: 2px 5px 2px 5px;
+    text-align:center;
+    
+}*/
+
+body{
+
+}
+.titre {font-weight: bold;}
+
+#A104 {
+    background-color : #5eb5e0 ;
+}
+#A202 {
+    background-color : #aacd4e ;
+}
+#A207A{
+    background-color : #FFCCFF ;
+}
+#A207B {
+    background-color : #ffcc00 ;
+}
+
+body{
+    text-align : center ; 
+
+}
+table {
+    margin : auto ;
+   
+
+}
+.table-bordered {
+    background-color : #9acfea  ;     
+    width : 80% ;
+}
+.tableRenseignerHome{
+    width : 30% ;
+}
+#labelSalle {
+    border : none ; 
+}
+
+.noBordure{
+    //border: none !important;
+    //display: inline ;
+    width : 20% ;
+    //background-color : white ; 
+
+
+}
+
+td, th{
+    padding: 10px;
+    width: 20%;
+    text-align:center;
+
+
+}
+alert{
+    color: pink;
+}
+
+.tableVisible{
+    border: 1px solid !important;
+    margin : auto ;
+}
+
+label {
+    font-size : 20px ; 
+    margin-right : 5px ; 
+    font-weight: initial ;
+} 
+
+.formRenseigner div {
+    //text-align : center ; 
+    width : 100% !important ;
+   
+    
+}
+
+.formRenseigner label {
+    text-align: right;
+    display: inline-block;
+    width: 50%;
+}
+.formRenseigner filedset {
+    float:left
+}
+
+.formRenseigner{
+  width : 40% ;   
+}
+
+#form_Valider{
+    float : right ; 
+    margin-right : 5 px ;
+    margin-right : 100px ; 
+    
+}
+#form_Effacer{
+    float : right ; 
+    margin-left : 5px ; 
+}
+

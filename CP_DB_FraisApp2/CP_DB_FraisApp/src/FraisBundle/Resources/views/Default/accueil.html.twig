@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> AppliFrais </title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %}
+    </head>
+    {{ include("FraisBundle:Template:Menu.html.twig") }}
+
+        <div class="jumbotron text-center" style="margin : 5px ">
+            <h1>AppliFrais</h1>          
+            <p> Selectionnez votre profil </p>
+        </div>
+        <div>
+            <table class="noBordure">
+                <tr>
+                    <td class="tdHome">
+                        <form  action="{{ path('frais_connexionV') }}" method="post">
+                            <input type="submit" class="btn btn-lg btn-inverse" value="Visiteur" />
+                        </form>
+                    </td>                   
+                    <td class="tdHome">
+                        <form  action="{{ path('frais_connexionC') }}" method="post">
+                            <input type="submit" class="btn btn-lg btn-inverse" value="Comptable" />
+                        </form>
+                    </td>
+                </tr>
+            </table> 
+
+
+        </div>
+
+    </body>
+    <footer>
+        <br>    
+        <p> developped by Charlotte Picois & Driss Belaroussi. </p>
+    </footer>
+</html>
+
+</p>
+</body>
+</html> 

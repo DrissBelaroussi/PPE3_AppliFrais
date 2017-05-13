@@ -1,0 +1,14 @@
+imports:
+    - {resource : "parameters.yml" }
+services:
+    GsbFrais2:
+        class: %pdo.class%
+        arguments:
+            - %GsbFrais2.dsn%
+            - %GsbFrais2.username%
+            - %GsbFrais2.password%
+            - %pdo.options%
+            
+#    frais.example:
+#        class: FraisBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

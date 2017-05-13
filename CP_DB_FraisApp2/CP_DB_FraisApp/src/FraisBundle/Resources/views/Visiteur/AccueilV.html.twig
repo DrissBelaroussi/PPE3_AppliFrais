@@ -1,0 +1,69 @@
+{# Represente la page d'accueil #}
+
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+
+
+        {% if visiteur is defined%}
+            {{ include("FraisBundle:Template:VisiteurConnectedMenu.html.twig") }}
+            <h1> 
+                {{ visiteur.nom }}
+                {{ visiteur.prenom }}
+            </h1>
+        {% else %}
+            {{ include("FraisBundle:Template:Menu.html.twig") }}
+        {%endif%}
+
+
+
+        <form action="{{ path('renseignerHome') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-inverse" value="Renseigner Fiche Frais" />
+        </form>
+        <form action="{{ path('consulter') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-inverse" value="Consulter Fiche Frais" />
+        </form>
+
+
+        {% if formFiche is defined %}        
+
+            {{form_start(formFiche)}}
+
+            <table style="">
+                <tr>
+                    <td style="width:100%">{{form_label(formFiche.date)}}</td>
+                </tr>
+                <tr>
+                    <td>  {{form_widget(formFiche.date.day,{'attr': { 'style': 'display:none' } } )}}
+                        {{form_widget(formFiche.date) }} </td>
+                    <td>   {{form_errors(formFiche.date)}}</td>
+
+                </tr>
+                <tr>
+                    <td>{{form_row(formFiche.Valider)}}</td>
+
+                </tr>
+
+
+            </table>
+
+            {{ form_rest(formFiche) }}
+            {{form_end(formFiche)}}
+
+        {%endif%}
+
+
+
+        {% if noFiche is defined %}
+            <div class="alert alert-default">
+                <strong> Oups !</strong> {{noFiche}}
+            </div>
+        {% endif %}
+
+    </body>
+</html>

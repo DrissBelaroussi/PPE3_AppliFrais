@@ -1,0 +1,40 @@
+{# empty Twig template #}
+
+{#{% for unComptable in data %}
+    {{unComptable['id']}}
+    {{unComptable['nom']}}
+    {{unComptable['prenom']}}</br>
+{%endfor %}#}
+
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+
+        {%if comptable is defined %}
+            {{comptable.id}}
+            {{comptable.nom}}
+            {{comptable.prenom}}</br>
+        {% endif %}
+
+
+
+        <form action="{{ path('suivreFiche') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-inverse" value="Suivre Paiements" />
+        </form>
+        <form action="{{ path('validerFiche') }}" method="post">
+            <input type="submit" class="btn btn-lg btn-inverse" value="Valider Fiche" />
+        </form>
+
+        
+    </body>
+
+
+
+
+
+

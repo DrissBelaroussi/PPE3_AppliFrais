@@ -1,0 +1,27 @@
+{# empty Twig template #}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bienvenue dans AppliFrais !</title>
+        {% stylesheets '@FraisBundle/Resources/public/css/*' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+        {% endstylesheets %} 
+    </head>
+    <body>
+   <div class="message">
+       {{ message }} 
+   </div> 
+  <div class="connexionC">
+        {{ form(form) }}
+   </div>
+   
+   
+  <form action="{{ path('frais_homepage') }}" method="post">
+    <input type="submit" value="Retour" />
+    
+</p>
+</body>
+</html> 
+
+
