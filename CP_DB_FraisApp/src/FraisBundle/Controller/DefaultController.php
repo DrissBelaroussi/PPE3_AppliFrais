@@ -15,48 +15,34 @@ use DateTime;
 use PDO;
 
 class DefaultController extends Controller {
-
+    // Retourne vers l'Acceuil ( Choix des profils ) 
     public function indexAction() {
 
         return $this->render('FraisBundle:Default:accueil.html.twig');
     }
-
+    //Retourne vers formulaire de connexion visiteur
     public function connexionVAction() {
         return $this->render('FraisBundle:Visiteur:ConnexionV.html.twig');
     }
-
+    //Retourne vers formulaire de connexion comptable
     public function connexionCAction() {
         return $this->render('FraisBundle:Comptable:ConnexionC.html.twig');
     }
-
-    public function seConnecter() {
-        $pdo = $this->get('GsbFrais');
-
-        return $pdo;
-    }
-
+    //Déconnexion et retour à l'Accueil
     public function deconnexionAction() {
 
         if (isset($_SESSION['visiteur'])) {
             unset($_SESSION['visiteur']);
         }
-
         return $this->render('FraisBundle:Default:accueil.html.twig');
     }
 
-    public function renseignerHomeAction() {
-
-        $date = new DateTime($_SESSION['date']);
-        $emFiche = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Fichefrais');
-        $fiche = $emFiche->findOneBy(array('idvisiteur' => $_SESSION['idVisiteur'], 'date' => $date));
-
-        if ($fiche) {
-            return $this->render('FraisBundle:Visiteur:RenseignerHome.html.twig', array('fiche' => $fiche));
-        } else {
-            return $this->render('FraisBundle:Visiteur:RenseignerHome.html.twig');
-        }
-    }
-
+   
+    
+    
+    // VISITEUR METHODS
+    
+    //Formulaire de connexion visiteur et retourne vers acceuil visiteur.
     public function formVAction() {
         $visiteur = new Visiteur();
         $form = $this->createForm(new \FraisBundle\Form\VisiteurType(), $visiteur);
@@ -81,10 +67,11 @@ class DefaultController extends Controller {
                 $_SESSION['date'] = $annee . '-' . $mois . '-01';
 
 
-                return $this->render('FraisBundle:Visiteur:AccueilV.html.twig', array('data' => $unVisiteur, "visiteur" => $_SESSION['visiteur']));
-                //return $this->redirectToRoute('home_visiteur', array ('data' =>  $leVisiteur ) ) ;
+                return $this->render('FraisBundle:Visiteur:AccueilV.html.twig',
+                        array('data' => $unVisiteur, "visiteur" => $_SESSION['visiteur']));              
             } else {
-                return $this->render('FraisBundle:Visiteur:ConnexionV.html.twig', array('form' => $form->createView(), 'message' => 'Echec connexion. Veuillez réessayer'));
+                return $this->render('FraisBundle:Visiteur:ConnexionV.html.twig',
+                        array('form' => $form->createView(), 'message' => 'Echec connexion. Veuillez réessayer'));
             }
         }
 
@@ -97,64 +84,39 @@ class DefaultController extends Controller {
         }
     }
 
-    public function formCAction() {
-        $comptable = new Comptable();
-        $form = $this->createForm(new \FraisBundle\Form\ComptableType(), $comptable);
+    
+    //Vérifie si une fiche existe pour le mois courant.
+    //En fonction choisir de renseigner frais forfait ou hors forfait.
+    public function renseignerHomeAction() {
 
-        $request = $this->container->get('request');
-        $form->handleRequest($request);
+        $date = new DateTime($_SESSION['date']);
+        $emFiche = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Fichefrais');
+        $fiche = $emFiche->findOneBy(array('idvisiteur' => $_SESSION['idVisiteur'], 'date' => $date));
 
-        if ($form->isValid()) {
-            $data = $form->getData();
-            $emComptable = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Comptable');
-            $leComptable = $emComptable->findOneBy(array('login' => $data->getLogin(), 'mdp' => $data->getMdp()));
-
-            if ($leComptable) {
-                $_SESSION['comptable'] = $leComptable;
-                // $_SESSION['idComptable'] = $leComptable->getId();
-                //return new \Symfony\Component\HttpFoundation\Response($leComptable[0]->getNom()) ; 
-
-
-                return $this->render('FraisBundle:Comptable:AccueilC.html.twig', array('comptable' => $_SESSION['comptable']));
-            } else {
-                return $this->render('FraisBundle:Comptable:ConnexionC.html.twig', array('form' => $form->createView(),
-                            'message' => 'Echec connexion. Veuillez réessayer'));
-            }
-        }
-        if (isset($_SESSION['comptable'])) {
-
-            return $this->render('FraisBundle:Comptable:AccueilC.html.twig', array("visiteur" => $_SESSION['comptable']));
+        if ($fiche) {
+            return $this->render('FraisBundle:Visiteur:RenseignerHome.html.twig', array('fiche' => $fiche));
         } else {
-            return $this->render('FraisBundle:Comptable:ConnexionC.html.twig', array('form' => $form->createView(),
-                        'message' => 'Veuillez vous identifier'));
+            return $this->render('FraisBundle:Visiteur:RenseignerHome.html.twig');
         }
     }
 
-    // VISITEUR METHODS
-
+    // Formulaire de date pour consulter fiche frais pour un mois et une année.
     public function getMoisVAction(Request $request) {
 
         $visiteur = $_SESSION['visiteur'];
 
         $ficheForm = new Fichefrais();
-        $form = $this->createForm(new \FraisBundle\Form\FichefraisType(), $ficheForm);      
-
-       // $form->handleRequest($request);
+        $form = $this->createForm(new \FraisBundle\Form\FichefraisType(), $ficheForm);
 
         $request = $this->container->get('request');
         $form->handleRequest($request);
 
         if ($form->isValid()) {
             $date = $form->getData()->getDate();
-           // return new Response( $date->format('Y-m-d'));
-            
             $emFiche = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Fichefrais');
             $fiche = $emFiche->findOneBy(array('idvisiteur' => $visiteur, 'date' => $date));
 
             if ($fiche) {
-
-                $fiche ;
-
                 $emLigneHF = $this->getDoctrine()->getManager()->getRepository("FraisBundle:Fraishorsforfait");
                 $fraisHF = $emLigneHF->findBy(array('idfiche' => $fiche));
 
@@ -178,6 +140,7 @@ class DefaultController extends Controller {
         return $this->render('FraisBundle:Visiteur:AccueilV.html.twig', array("visiteur" => $_SESSION['visiteur'], 'formFiche' => $form->createView()));
     }
 
+    // Formulaire de modification des frais forfaits.
     public function modifierFFAction(Request $request) {
 
         $date = new DateTime("now");
@@ -220,8 +183,6 @@ class DefaultController extends Controller {
 
             $builder->handleRequest($request);
 
-
-
             if ($builder->isValid()) {
 
                 $this->insertFraisForfait($builder, $ficheFrais);
@@ -231,11 +192,11 @@ class DefaultController extends Controller {
         } else {
 
             $this->cloturerFiche();
-
             return $this->renseigner($request);
         }
     }
 
+    //Cloturer la dernière fiche. Lorsqu'il y en a pas pour le mois courant.
     public function cloturerFiche() {
 
         $emFicheAnnee = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Fichefrais');
@@ -265,6 +226,7 @@ class DefaultController extends Controller {
         }
     }
 
+    // Formulaire de création d'une nouvelle fiche de frais + frais forfaits
     public function renseigner(Request $request) {
 
         $today = new DateTime("now");
@@ -296,6 +258,7 @@ class DefaultController extends Controller {
         return $this->render('FraisBundle:Visiteur:renseignerFiche.html.twig', array('form' => $form->createView()));
     }
 
+    //Permet l'insertion des frais forfaitisés
     public function insertFraisForfait($builder, $ficheFrais) {
 
         $ficheFrais->setNbjustificatifs($builder['nbJustificatifs']->getData());
@@ -340,6 +303,7 @@ class DefaultController extends Controller {
         }
     }
 
+    // Formulaire de renseignement des frais hors forfait et consultation.
     public function renseignerHFAction() {
 
         $dateT = new DateTime("now");
@@ -359,8 +323,6 @@ class DefaultController extends Controller {
 
         $request = $this->container->get('request');
         $form->handleRequest($request);
-
-
 
         $dateOk = true;
         if ($fiche) {
@@ -383,10 +345,6 @@ class DefaultController extends Controller {
             $emLigneHF = $this->getDoctrine()->getManager()->getRepository("FraisBundle:Fraishorsforfait");
             $LignesHF = $emLigneHF->findBy(array('idfiche' => $fiche));
 
-//        if (!$LignesHF) {
-//                return $this->redirectToRoute('renseignerHF') ;
-//                //return $this->render('FraisBundle:Visiteur:RenseignerFicheHF.html.twig', array('form' => $form->createView()));
-//            }
         } else {
             return $this->redirectToRoute('modifierFF');
         }
@@ -395,11 +353,10 @@ class DefaultController extends Controller {
                         'alert' => "La date ne doit ni être antérieure à plus d'un an, ni supérieure à la date du jour."));
         } else {
             return $this->render('FraisBundle:Visiteur:RenseignerFicheHF.html.twig', array('fraisHF' => $LignesHF, 'form' => $form->createView()));
-        }
-
-        //
+        }       
     }
 
+    // Supression d'un frais hors forfait
     public function supprimerHFAction() {
         $date = new DateTime("now");
         $dateSQL = date_format($date, 'Y-m-d');
@@ -408,9 +365,6 @@ class DefaultController extends Controller {
 
         $idFraisHF = $this->get('request')->request->get('idFraisHF');
 
-//        $emFraisHF = $this->getDoctrine()->getManager()->getRepository("FraisBundle:Fraishorsforfait");
-//        $LigneHF = $emFraisHF->deleteContenir($_SESSION['idVisiteur'], $annee . "-" . $mois . '-01', $idFraisHF);
-
         $emLigneHF = $this->getDoctrine()->getManager()->getRepository("FraisBundle:Fraishorsforfait");
         $LigneHF = $emLigneHF->deleteFraisHF($idFraisHF);
 
@@ -418,6 +372,38 @@ class DefaultController extends Controller {
     }
 
     // COMPTABLE METHODS
+    
+    //Formulaire de connexion comptable.
+    public function formCAction() {
+        $comptable = new Comptable();
+        $form = $this->createForm(new \FraisBundle\Form\ComptableType(), $comptable);
+
+        $request = $this->container->get('request');
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $data = $form->getData();
+            $emComptable = $this->getDoctrine()->getManager()->getRepository('FraisBundle:Comptable');
+            $leComptable = $emComptable->findOneBy(array('login' => $data->getLogin(), 'mdp' => $data->getMdp()));
+
+            if ($leComptable) {
+                $_SESSION['comptable'] = $leComptable;
+
+                return $this->render('FraisBundle:Comptable:AccueilC.html.twig', array('comptable' => $_SESSION['comptable']));
+            } else {
+                return $this->render('FraisBundle:Comptable:ConnexionC.html.twig', array('form' => $form->createView(),
+                            'message' => 'Echec connexion. Veuillez réessayer'));
+            }
+        }
+        if (isset($_SESSION['comptable'])) {
+
+            return $this->render('FraisBundle:Comptable:AccueilC.html.twig', array("visiteur" => $_SESSION['comptable']));
+        } else {
+            return $this->render('FraisBundle:Comptable:ConnexionC.html.twig', array('form' => $form->createView(),
+                        'message' => 'Veuillez vous identifier'));
+        }
+    }
+
 
     public function suivreFicheAction() {
 

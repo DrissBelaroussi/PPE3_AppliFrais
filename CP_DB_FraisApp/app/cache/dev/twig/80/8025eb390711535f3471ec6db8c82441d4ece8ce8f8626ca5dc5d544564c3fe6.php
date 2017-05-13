@@ -15,8 +15,8 @@ class __TwigTemplate_f53b9282ac60ac340fc36698bf192c6fd2ef5a5b66af6e0486af0abc09a
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_2aa83dd9ee9d8256780aaec6a6c8eda58f5cab014e25f10db4479f65cbc0792d = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_2aa83dd9ee9d8256780aaec6a6c8eda58f5cab014e25f10db4479f65cbc0792d->enter($__internal_2aa83dd9ee9d8256780aaec6a6c8eda58f5cab014e25f10db4479f65cbc0792d_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:RenseignerHome.html.twig"));
+        $__internal_f7811eb9015d9277a35d2d2317d05088cc5a66e8e25fd20bab25a4948721cdc3 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_f7811eb9015d9277a35d2d2317d05088cc5a66e8e25fd20bab25a4948721cdc3->enter($__internal_f7811eb9015d9277a35d2d2317d05088cc5a66e8e25fd20bab25a4948721cdc3_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:RenseignerHome.html.twig"));
 
         // line 2
         echo "
@@ -91,20 +91,14 @@ class __TwigTemplate_f53b9282ac60ac340fc36698bf192c6fd2ef5a5b66af6e0486af0abc09a
         }
         // line 29
         echo "            </tr>
-            <tr>
-            ";
-        // line 36
-        echo "            
-               ";
-        // line 42
-        echo "            </tr>
+            
         </table>
 
 
     </body>
     <footer>
         <form action=\"";
-        // line 48
+        // line 36
         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("frais_connexionV");
         echo "\" method=\"post\">
             <input type=\"submit\" class=\"btn btn-lg btn-default\"  value=\"Retour\" />
@@ -116,7 +110,7 @@ class __TwigTemplate_f53b9282ac60ac340fc36698bf192c6fd2ef5a5b66af6e0486af0abc09a
 
 ";
         
-        $__internal_2aa83dd9ee9d8256780aaec6a6c8eda58f5cab014e25f10db4479f65cbc0792d->leave($__internal_2aa83dd9ee9d8256780aaec6a6c8eda58f5cab014e25f10db4479f65cbc0792d_prof);
+        $__internal_f7811eb9015d9277a35d2d2317d05088cc5a66e8e25fd20bab25a4948721cdc3->leave($__internal_f7811eb9015d9277a35d2d2317d05088cc5a66e8e25fd20bab25a4948721cdc3_prof);
 
     }
 
@@ -132,12 +126,12 @@ class __TwigTemplate_f53b9282ac60ac340fc36698bf192c6fd2ef5a5b66af6e0486af0abc09a
 
     public function getDebugInfo()
     {
-        return array (  108 => 48,  100 => 42,  97 => 36,  93 => 29,  85 => 24,  81 => 22,  79 => 21,  72 => 17,  63 => 11,  58 => 8,  32 => 7,  28 => 6,  22 => 2,);
+        return array (  102 => 36,  93 => 29,  85 => 24,  81 => 22,  79 => 21,  72 => 17,  63 => 11,  58 => 8,  32 => 7,  28 => 6,  22 => 2,);
     }
 
     public function getSource()
     {
-        return "{# empty Twig template #}
+        return "{# Rediriger vers 2 boutons : Renseigner les frais forfait + la fiche de frais et renseigner les frais hors forfait #}
 
 <html>
     <head>
@@ -166,19 +160,7 @@ class __TwigTemplate_f53b9282ac60ac340fc36698bf192c6fd2ef5a5b66af6e0486af0abc09a
                 </td>
                 {% endif %}
             </tr>
-            <tr>
-            {#<td>
-                <form action=\"{{ path('modifierFF') }}\" method=\"post\">
-                    <input type=\"submit\" class=\"btn btn-lg btn-inverse\" value=\"Modifier frais forfaitisés\" />
-                </form>
-            </td>#}
             
-               {# <td>
-                    <form action=\"{{ path('modifierHF') }}\" method=\"post\">
-                        <input type=\"submit\" class=\"btn btn-lg btn-inverse\" value=\"Modifier  frais hors forfait\" />
-                    </form>
-                </td>#}
-            </tr>
         </table>
 
 

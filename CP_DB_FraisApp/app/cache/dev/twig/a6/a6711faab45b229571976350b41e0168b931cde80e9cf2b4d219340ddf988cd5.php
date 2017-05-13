@@ -15,8 +15,8 @@ class __TwigTemplate_a94c4c6607aef216729ed59b455757ff781d7d6afc111ba827a1c5bd187
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_1b9809911da48fa00d0bf215279425ebcb5e18c3760a50ff7c2a5b46e9dde95c = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_1b9809911da48fa00d0bf215279425ebcb5e18c3760a50ff7c2a5b46e9dde95c->enter($__internal_1b9809911da48fa00d0bf215279425ebcb5e18c3760a50ff7c2a5b46e9dde95c_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:AccueilV.html.twig"));
+        $__internal_65e208228dbe882e745f717427abf99790051a65432df0ca6b6e0f9560d979c2 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_65e208228dbe882e745f717427abf99790051a65432df0ca6b6e0f9560d979c2->enter($__internal_65e208228dbe882e745f717427abf99790051a65432df0ca6b6e0f9560d979c2_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:AccueilV.html.twig"));
 
         // line 2
         echo "
@@ -182,7 +182,7 @@ class __TwigTemplate_a94c4c6607aef216729ed59b455757ff781d7d6afc111ba827a1c5bd187
 </html>
 ";
         
-        $__internal_1b9809911da48fa00d0bf215279425ebcb5e18c3760a50ff7c2a5b46e9dde95c->leave($__internal_1b9809911da48fa00d0bf215279425ebcb5e18c3760a50ff7c2a5b46e9dde95c_prof);
+        $__internal_65e208228dbe882e745f717427abf99790051a65432df0ca6b6e0f9560d979c2->leave($__internal_65e208228dbe882e745f717427abf99790051a65432df0ca6b6e0f9560d979c2_prof);
 
     }
 
@@ -203,7 +203,7 @@ class __TwigTemplate_a94c4c6607aef216729ed59b455757ff781d7d6afc111ba827a1c5bd187
 
     public function getSource()
     {
-        return "{# empty Twig template #}
+        return "{# Represente la page d'accueil #}
 
 <html>
     <head>

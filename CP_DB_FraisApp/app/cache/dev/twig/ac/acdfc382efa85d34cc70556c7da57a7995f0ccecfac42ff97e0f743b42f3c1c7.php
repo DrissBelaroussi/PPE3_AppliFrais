@@ -15,8 +15,8 @@ class __TwigTemplate_4ea4e7695bc26ce9fa91ad73febb735f60ce57f20a0c3b5187e718b14d9
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_21d165423c4287d5ab3ed9faf6c271750c5701a44d98e0ec9be70fd56311e8d4 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_21d165423c4287d5ab3ed9faf6c271750c5701a44d98e0ec9be70fd56311e8d4->enter($__internal_21d165423c4287d5ab3ed9faf6c271750c5701a44d98e0ec9be70fd56311e8d4_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:ficheFrais.html.twig"));
+        $__internal_c3c15382d8e5b8e12302526b31914860e4acba63c8af76e5692bfbb92da50286 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_c3c15382d8e5b8e12302526b31914860e4acba63c8af76e5692bfbb92da50286->enter($__internal_c3c15382d8e5b8e12302526b31914860e4acba63c8af76e5692bfbb92da50286_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:ficheFrais.html.twig"));
 
         // line 2
         echo "<html>
@@ -250,7 +250,7 @@ class __TwigTemplate_4ea4e7695bc26ce9fa91ad73febb735f60ce57f20a0c3b5187e718b14d9
                                             </html>
 ";
         
-        $__internal_21d165423c4287d5ab3ed9faf6c271750c5701a44d98e0ec9be70fd56311e8d4->leave($__internal_21d165423c4287d5ab3ed9faf6c271750c5701a44d98e0ec9be70fd56311e8d4_prof);
+        $__internal_c3c15382d8e5b8e12302526b31914860e4acba63c8af76e5692bfbb92da50286->leave($__internal_c3c15382d8e5b8e12302526b31914860e4acba63c8af76e5692bfbb92da50286_prof);
 
     }
 
@@ -271,7 +271,7 @@ class __TwigTemplate_4ea4e7695bc26ce9fa91ad73febb735f60ce57f20a0c3b5187e718b14d9
 
     public function getSource()
     {
-        return "{# empty Twig template #}
+        return "{# Affichage de la fiche de frais + des frais forfait + des frais hors forfait #}
 <html>
     <head>
         {% stylesheets '@FraisBundle/Resources/public/css/*' %}

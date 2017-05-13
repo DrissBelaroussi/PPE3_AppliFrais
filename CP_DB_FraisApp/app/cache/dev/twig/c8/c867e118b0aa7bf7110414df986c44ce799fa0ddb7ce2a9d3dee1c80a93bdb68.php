@@ -15,18 +15,18 @@ class __TwigTemplate_0385f9dde1efa9feb23396e599cff537a605f1a948b5cd6a8d86d69665e
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        $__internal_057d552bd85ad0810870f4e0b2fd830d4f6e3597c26c2fbfae703435e7e70a16 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
-        $__internal_057d552bd85ad0810870f4e0b2fd830d4f6e3597c26c2fbfae703435e7e70a16->enter($__internal_057d552bd85ad0810870f4e0b2fd830d4f6e3597c26c2fbfae703435e7e70a16_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:renseignerFiche.html.twig"));
+        $__internal_8ff5bb3a3fee255c4e19cc33bd435ae82b00969c2c736c4fff217ead7d102e12 = $this->env->getExtension("Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension");
+        $__internal_8ff5bb3a3fee255c4e19cc33bd435ae82b00969c2c736c4fff217ead7d102e12->enter($__internal_8ff5bb3a3fee255c4e19cc33bd435ae82b00969c2c736c4fff217ead7d102e12_prof = new Twig_Profiler_Profile($this->getTemplateName(), "template", "FraisBundle:Visiteur:renseignerFiche.html.twig"));
 
-        // line 1
+        // line 2
         echo "<html>
     <head>
         ";
-        // line 3
+        // line 4
         if (isset($context['assetic']['debug']) && $context['assetic']['debug']) {
             // asset "3584534_0"
             $context["asset_url"] = isset($context['assetic']['use_controller']) && $context['assetic']['use_controller'] ? $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("_assetic_3584534_0") : $this->env->getExtension('Symfony\Bridge\Twig\Extension\AssetExtension')->getAssetUrl("_controller/css/3584534_part_1_bootstrap-theme.min_1.css");
-            // line 4
+            // line 5
             echo "        <link rel=\"stylesheet\" href=\"";
             echo twig_escape_filter($this->env, (isset($context["asset_url"]) ? $context["asset_url"] : $this->getContext($context, "asset_url")), "html", null, true);
             echo "\" type=\"text/css\" />
@@ -52,39 +52,53 @@ class __TwigTemplate_0385f9dde1efa9feb23396e599cff537a605f1a948b5cd6a8d86d69665e
         ";
         }
         unset($context["asset_url"]);
-        // line 6
+        // line 7
         echo "    </head>
 
     <body>
 
         ";
-        // line 10
+        // line 11
         echo twig_include($this->env, $context, "FraisBundle:Template:VisiteurConnectedMenu.html.twig");
         echo "
 
         <div class=\"formRenseigner\">
             ";
-        // line 13
+        // line 14
         if (array_key_exists("form", $context)) {
-            // line 14
+            // line 15
             echo "                <h3> Frais forfaitisés</h3>
                 ";
-            // line 15
+            // line 16
             echo             $this->env->getExtension('Symfony\Bridge\Twig\Extension\FormExtension')->renderer->renderBlock((isset($context["form"]) ? $context["form"] : $this->getContext($context, "form")), 'form');
             echo "
             ";
         }
-        // line 17
+        // line 18
         echo "        </div>
 
+        <div class=\"formRenseigner\">
+
+            <form action=\"";
+        // line 22
+        echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("renseignerHome");
+        echo "\" method=\"post\">
+                <input type=\"submit\" class=\"btn btn-lg btn-default\"  value=\"Retour\" />
+            </form>
+        </div>
+
+    </body> 
 
 
-       
+
+
+
+
 
 
 ";
         
-        $__internal_057d552bd85ad0810870f4e0b2fd830d4f6e3597c26c2fbfae703435e7e70a16->leave($__internal_057d552bd85ad0810870f4e0b2fd830d4f6e3597c26c2fbfae703435e7e70a16_prof);
+        $__internal_8ff5bb3a3fee255c4e19cc33bd435ae82b00969c2c736c4fff217ead7d102e12->leave($__internal_8ff5bb3a3fee255c4e19cc33bd435ae82b00969c2c736c4fff217ead7d102e12_prof);
 
     }
 
@@ -100,12 +114,13 @@ class __TwigTemplate_0385f9dde1efa9feb23396e599cff537a605f1a948b5cd6a8d86d69665e
 
     public function getDebugInfo()
     {
-        return array (  78 => 17,  73 => 15,  70 => 14,  68 => 13,  62 => 10,  56 => 6,  30 => 4,  26 => 3,  22 => 1,);
+        return array (  84 => 22,  78 => 18,  73 => 16,  70 => 15,  68 => 14,  62 => 11,  56 => 7,  30 => 5,  26 => 4,  22 => 2,);
     }
 
     public function getSource()
     {
-        return "<html>
+        return "{# Formulaire de renseignement de frais forfait et fiche frais #}
+<html>
     <head>
         {% stylesheets '@FraisBundle/Resources/public/css/*' %}
         <link rel=\"stylesheet\" href=\"{{ asset_url }}\" type=\"text/css\" />
@@ -123,9 +138,20 @@ class __TwigTemplate_0385f9dde1efa9feb23396e599cff537a605f1a948b5cd6a8d86d69665e
             {% endif %}
         </div>
 
+        <div class=\"formRenseigner\">
+
+            <form action=\"{{ path('renseignerHome') }}\" method=\"post\">
+                <input type=\"submit\" class=\"btn btn-lg btn-default\"  value=\"Retour\" />
+            </form>
+        </div>
+
+    </body> 
 
 
-       
+
+
+
+
 
 
 ";
